@@ -1,0 +1,15 @@
+.resistences_container {
+  display: grid;
+}
+
+.resistor {
+  display: flex;
+  flex-direction: columns;
+}
+
+.stripe {
+  height: 10vh;
+  width: 10vw;
+  background-color: black;
+}
+
