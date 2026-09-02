@@ -1,3 +1,10 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .resistences_container {
   display: grid;
 }
@@ -7,9 +14,12 @@
   flex-direction: columns;
 }
 
+#stripes {
+  display: flex;
+  flex-direction: columns;
+}
 .stripe {
   height: 10vh;
   width: 10vw;
   background-color: black;
 }
-
