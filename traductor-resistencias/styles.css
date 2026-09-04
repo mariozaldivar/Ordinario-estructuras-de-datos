@@ -9,17 +9,23 @@
   display: grid;
 }
 
-.resistor {
+.resistences_wrapper {
   display: flex;
-  flex-direction: columns;
+  flex-direction: column;
+  align-items: center;
 }
 
-#stripes {
-  display: flex;
-  flex-direction: columns;
+#resistor {
+  width: 600px;
 }
-.stripe {
-  height: 10vh;
-  width: 10vw;
-  background-color: black;
+
+#resistor svg{
+  width: 100%;
+  height: auto;
+  display: block;
 }
+
+#valor_resistencia {
+  width: 220px;
+}
+

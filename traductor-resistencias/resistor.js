@@ -44,8 +44,7 @@ class Resistor {
 
   colorStripes() {
     for (let i = 0; i < this.stripes.length; i++) {
-      this.stripes[i].style.backgroundColor =
-        this.valorColores[this.valuesArray[i]];
+      this.stripes[i].style.fill = this.valorColores[this.valuesArray[i]];
     }
   }
 }
