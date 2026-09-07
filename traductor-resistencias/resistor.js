@@ -1,6 +1,7 @@
 class Resistor {
   // value debe ser un array
   constructor(value, element, container) {
+
     this.valorColores = {
       0: "black",
       1: "brown",
@@ -51,15 +52,25 @@ class Resistor {
 }
 
 class Circuito {
-  constructor() {}
+  constructor(resistorContainer) {
+    this.resistorContainer = resistorContainer
+    this.resistors = []
+  }
+  
+  appendResistorToCircuit(resistor) {
+    this.resistors.append(resistor)
+    this.resistorContainer.appendChild(resistor.element)
+  }
 }
+
 
 // () => {} es una arrow function, donde
 document.addEventListener("DOMContentLoaded", () => {
-  const resistorValue = document.querySelector("#valor_resistencia");
-  const resistorElement = document.querySelector("#resistor");
-  const stripesContainer = document.querySelector("#resistences_container");
-  const resistor = new Resistor(0, resistorElement, stripesContainer);
+  const currentResistorValue = document.querySelector("#valor_resistencia");
+  const currentResistorElement = document.querySelector("#current_resistor")
+  const stripesContainer = document.querySelector("#stripes");
+  const currentResistor = new Resistor(0, resistorElement, stripesContainer);
+
 
   resistorValue.addEventListener("change", () => {
     resistor.setResistorValue(resistorValue.value);
