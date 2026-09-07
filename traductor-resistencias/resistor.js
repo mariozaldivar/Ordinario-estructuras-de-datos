@@ -133,20 +133,35 @@ class Resistor {
     if (numberString.length == 1) {
       this.valuesArray = [0, number, 0, 0];
     } else if (numberString.length >= 2) {
-      this.valuesArray = [
-        parseInt(numberString[0]),
-        parseInt(numberString[1]),
-        numberString.length - 2,
-        0,
-      ];
+      let leftover = numberString.substring(2); // "cdef"
+      if (parseFloat(leftover) > parseFloat(numberString) / 20) {
+        this.valuesArray = [
+          parseInt(numberString[0]),
+          parseInt(numberString[1]),
+          numberString.length - 2,
+          1,
+        ];
+      } else {
+        this.valuesArray = [
+          parseInt(numberString[0]),
+          parseInt(numberString[1]),
+          numberString.length - 2,
+          0,
+        ];
+      }
     } else {
       this.valuesArray = [0, 0, 0, 0];
     }
   }
 
   colorStripes() {
-    for (let i = 0; i < this.stripes.length; i++) {
+    for (let i = 0; i < this.stripes.length - 1; i++) {
       this.stripes[i].style.fill = this.valorColores[this.valuesArray[i]];
+    }
+    if (this.valuesArray[this.stripes.length - 1] == 0) {
+      this.stripes[this.stripes.length - 1].style.fill = "#c68401";
+    } else {
+      this.stripes[this.stripes.length - 1].style.fill = "#C0C0C0 ";
     }
   }
 }
