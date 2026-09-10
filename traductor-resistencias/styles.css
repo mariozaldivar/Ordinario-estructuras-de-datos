@@ -7,6 +7,8 @@
 
 .resistences_container {
   display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(120px,1fr));
+  gap: 20px;
 }
 
 .resistences_wrapper {
@@ -15,17 +17,33 @@
   align-items: center;
 }
 
-#resistor {
-  width: 600px;
+
+#valor_resistencia {
+  width: 220px;
+  margin-bottom: 15px;
 }
 
-#resistor svg{
-  width: 100%;
+#current_resistence .resistor {
+  width: 750px;
+  display: flex;
+  justify-content: center;
+}
+
+#current_resistence .resistor svg {
+  width: 80%;
   height: auto;
   display: block;
 }
 
-#valor_resistencia {
-  width: 220px;
+.resistences_container .resistor{
+  width: 300px;
 }
+
+.resistences_container .resistor svg {
+  width: 80%;
+  height: auto;
+  display: block;
+}
+
+
 

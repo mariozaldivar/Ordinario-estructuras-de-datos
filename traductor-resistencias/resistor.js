@@ -112,7 +112,7 @@ class Resistor {
 
     this.container = container;
     this.element = document.createElement("div");
-    this.element.id = "resistor";
+    this.element.className = "resistor";
     this.element.innerHTML = construirHTMLResistor();
     this.value = parseInt(value);
     this.stripe1 = this.element.querySelector("#stripe_1");
@@ -128,6 +128,8 @@ class Resistor {
 
   setResistorValue(number) {
     this.value = number;
+
+    
     let numberString = number.toString();
     if (numberString.length == 1) {
       this.valuesArray = [0, number, 0, 0];
@@ -174,6 +176,7 @@ class Circuito {
   }
 
   agregarCurrentResistorACircuito() {
+    if (isNaN(parseFloat(this.currentResistor.value)) || parseFloat(this.currentResistor.value) <= 0) return;
     this.resistorList.push(this.currentResistor);
     this.circuitContainerElement.append(this.currentResistor.element);
     this.currentResistor = new Resistor(0, this.currentResistorElement);
@@ -182,7 +185,8 @@ class Circuito {
   sumarEnSerie() {
     let sum = 0;
     this.resistorList.forEach((resistor) => {
-      sum += parseInt(resistor.value);
+      if (parseInt(resistor.value) <= 0) return;
+      sum += (parseInt(resistor.value) || 0);
     });
     return sum;
   }
@@ -190,9 +194,10 @@ class Circuito {
   sumarEnParalelo() {
     let sum = 0;
     this.resistorList.forEach((resistor) => {
-      sum += 1 / parseFloat(resistor.value);
+      if (isNaN(parseFloat(resistor.value)) || parseFloat(resistor.value) <= 0) return;
+      sum += (1 / (parseFloat(resistor.value)));
     });
-    return 1 / sum;
+    return sum > 0 ? 1 / sum : 0;
   }
 }
 
@@ -208,14 +213,27 @@ document.addEventListener("DOMContentLoaded", () => {
   const textoParalelo = document.querySelector("#paralelo");
   const textoEnSerie = document.querySelector("#serie");
 
+  resistorValue.addEventListener("keydown", (key) => {
+    if (key.key === "-") {
+      key.preventDefault;
+    }
+  })
+
   resistorValue.addEventListener("input", () => {
-    circuit.currentResistor.setResistorValue(resistorValue.value);
+    if (isNaN(parseFloat(resistorValue.value))){
+      circuit.currentResistor.setResistorValue(0);
+      resistorValue.value = '';
+     alert("Escriba un numero positivo");
+    } else {
+      circuit.currentResistor.setResistorValue(resistorValue.value);
+    }
+
     circuit.currentResistor.colorStripes();
   });
 
   botonAgregarACircuito.addEventListener("click", () => {
     circuit.agregarCurrentResistorACircuito();
     textoEnSerie.textContent = `Suma total de las resistencias de tu circuito en serie: ${circuit.sumarEnSerie()}Ω`;
-    textoParalelo.textContent = `Suma total de las resistencias de tu circuito en paralelo: ${circuit.sumarEnParalelo()}Ω`;
+    textoParalelo.textContent = `Suma total de las resistencias de tu circuito en paralelo: ${circuit.sumarEnParalelo()||0}Ω`;
   });
 });
