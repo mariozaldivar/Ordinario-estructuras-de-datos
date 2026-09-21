@@ -1,0 +1,311 @@
+/* ---------- Página ---------- */
+
+.page {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 40px 16px;
+}
+
+.page-head {
+  text-align: center;
+  max-width: 36rem;
+}
+
+.page-head p {
+  margin-top: 6px;
+  font-size: 15px;
+  color: var(--texto-suave);
+}
+
+.page-foot {
+  min-height: 1.45em;
+}
+
+.message {
+  font-size: 14px;
+  color: var(--texto-suave);
+  text-align: center;
+}
+
+.message.is-error {
+  color: #8c2f4a;
+  background: #f7e9ee;
+  border: 1px solid #ecd2da;
+  border-radius: 8px;
+  padding: 8px 14px;
+  max-width: 36rem;
+}
+
+/* ---------- Tarjeta ---------- */
+
+.card {
+  width: 100%;
+  max-width: 760px;
+  background: var(--superficie);
+  border: 1px solid var(--linea);
+  border-radius: 18px;
+  box-shadow: var(--sombra);
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ---------- La cola, como pista horizontal ---------- */
+
+.queue-area {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.queue-track {
+  list-style: none;
+  margin: 0;
+  padding: 2px 0 8px;
+  display: flex;
+  align-items: stretch;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: var(--acento-anillo) transparent;
+  /* Desvanece el borde derecho para insinuar que la cola sigue.
+     Si no hay desborde, cae sobre espacio vacío y no se nota. */
+  mask-image: linear-gradient(to right, #000 calc(100% - 44px), transparent);
+  -webkit-mask-image: linear-gradient(
+    to right,
+    #000 calc(100% - 44px),
+    transparent
+  );
+}
+
+.queue-track::-webkit-scrollbar {
+  height: 6px;
+}
+
+.queue-track::-webkit-scrollbar-thumb {
+  background: var(--acento-anillo);
+  border-radius: 3px;
+}
+
+/* Cada archivo ocupa un ancho fijo. Al imprimirse, ese ancho se colapsa a 0
+   y por eso los recuadros siguientes se deslizan hacia la izquierda. */
+.queue-card {
+  flex: 0 0 152px;
+  margin-right: 14px;
+  transition:
+    flex-basis var(--salida) cubic-bezier(0.4, 0, 0.2, 1),
+    margin-right var(--salida) cubic-bezier(0.4, 0, 0.2, 1),
+    opacity calc(var(--salida) * 0.75) ease-out;
+}
+
+.queue-card:last-child {
+  margin-right: 0;
+}
+
+.queue-card.is-leaving {
+  flex-basis: 0;
+  margin-right: 0;
+  opacity: 0;
+  /* Solo al salir, para no recortar el foco del teclado en uso normal */
+  overflow: hidden;
+}
+
+.card-inner {
+  /* Ancho fijo: evita que el contenido se aplaste mientras el recuadro sale */
+  width: 152px;
+  min-height: 150px;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 16px 12px;
+  border: 1px solid var(--linea);
+  border-radius: 12px;
+  background: var(--superficie);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9px;
+  transition:
+    transform var(--salida) cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 0.2s,
+    border-color 0.2s;
+}
+
+.queue-card.is-leaving .card-inner {
+  transform: translateX(-28px) scale(0.96);
+}
+
+.queue-card.is-front .card-inner {
+  background: var(--acento-tenue);
+  border-color: var(--acento-anillo);
+}
+
+.card-badge {
+  flex: none;
+  width: 40px;
+  height: 40px;
+  border: 1.5px solid var(--acento-anillo);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  color: var(--acento);
+  background: var(--superficie);
+}
+
+.card-name {
+  width: 100%;
+  font-size: 13px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-detail {
+  font-size: 11px;
+  color: var(--texto-tenue);
+  margin-top: auto;
+  font-variant-numeric: tabular-nums;
+}
+
+.card-bar {
+  width: 100%;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--linea);
+  overflow: hidden;
+}
+
+.card-bar-fill {
+  display: block;
+  height: 100%;
+  border-radius: 2px;
+  background: var(--acento);
+  transition: width 0.15s linear;
+}
+
+.print-button {
+  width: 100%;
+  margin-top: auto;
+  padding: 7px 10px;
+  border: none;
+  border-radius: 6px;
+  background: var(--acento);
+  color: var(--superficie);
+  font-size: 13px;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.print-button:hover:not(:disabled) {
+  background: var(--acento-oscuro);
+}
+
+.print-button:disabled {
+  opacity: 0.6;
+}
+
+.queue-axis {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--texto-tenue);
+  padding: 0 2px;
+}
+
+.queue-empty {
+  min-height: 150px;
+  display: grid;
+  place-items: center;
+  font-size: 15px;
+  color: var(--texto-tenue);
+  text-align: center;
+  border: 1px dashed var(--linea);
+  border-radius: 12px;
+  padding: 0 24px;
+}
+
+/* ---------- Banda de subida, debajo de la cola ---------- */
+
+.upload-band {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  padding: 20px 24px;
+  border: 1.5px dashed var(--acento-anillo);
+  border-radius: 12px;
+  transition:
+    background-color 0.2s,
+    border-color 0.2s;
+}
+
+.upload-band.is-dragging {
+  background: var(--acento-tenue);
+  border-color: var(--acento);
+}
+
+.upload-icon {
+  width: 32px;
+  height: 32px;
+  stroke: var(--acento);
+  flex: none;
+}
+
+.upload-title {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.upload-or {
+  font-size: 15px;
+  color: var(--texto-suave);
+}
+
+.browse-button {
+  padding: 9px 26px;
+  border: none;
+  border-radius: 6px;
+  background: var(--acento);
+  color: var(--superficie);
+  font-size: 15px;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.browse-button:hover:not(:disabled) {
+  background: var(--acento-oscuro);
+}
+
+.browse-button:disabled {
+  opacity: 0.55;
+}
+
+.upload-input {
+  display: none;
+}
+
+/* ---------- Pantallas angostas ---------- */
+
+@media (max-width: 620px) {
+  .card {
+    padding: 16px;
+  }
+
+  .upload-band {
+    padding: 18px 16px;
+    gap: 10px;
+  }
+
+  .upload-title {
+    font-size: 15px;
+  }
+}

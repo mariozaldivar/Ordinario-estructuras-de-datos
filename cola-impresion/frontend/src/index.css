@@ -1,0 +1,81 @@
+:root {
+  /* Paleta gris/morado tenue */
+  --fondo: #eae8f1;
+  --fondo-hondo: #e0dde9;
+  --superficie: #fff;
+  --acento: #6f5da8;
+  --acento-oscuro: #5a4a90;
+  --acento-tenue: #f4f2fa;
+  --acento-anillo: #d7d0e9;
+  --texto: #2e2a3b;
+  --texto-suave: #78748a;
+  --texto-tenue: #9d99ac;
+  --linea: #e2dfec;
+  --sombra: 0 12px 32px rgba(46, 42, 59, 0.09);
+
+  /* Debe coincidir con --salida en App.css y con DURACION_SALIDA en App.jsx */
+  --salida: 380ms;
+
+  font-family: "DM Sans", system-ui, "Segoe UI", Roboto, sans-serif;
+  font-size: 16px;
+  line-height: 1.45;
+  color: var(--texto);
+  color-scheme: light;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100svh;
+  /* El morado se insinúa apenas, más hacia el centro */
+  background:
+    radial-gradient(
+      1100px 620px at 50% 12%,
+      #efedf5 0%,
+      var(--fondo) 55%,
+      var(--fondo-hondo) 100%
+    );
+}
+
+h1 {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+:focus-visible {
+  outline: 2px solid var(--acento);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --salida: 1ms;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 1ms !important;
+    animation-duration: 1ms !important;
+  }
+}

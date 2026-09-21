@@ -1,0 +1,56 @@
+# ---------------- Dependencias ----------------
+node_modules/
+
+# ---------------- Entornos de Python ----------------
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# ---------------- Compilaciones ----------------
+dist/
+dist-ssr/
+build/
+*.local
+
+# ---------------- Datos de la cola de impresión ----------------
+# Los archivos subidos son datos del usuario, no código fuente.
+# Se conserva la carpeta (con .gitkeep) porque la API escribe ahí.
+cola-impresion/backend/src/backend/files/*
+!cola-impresion/backend/src/backend/files/.gitkeep
+
+# queue.json es el estado de la cola en tiempo de ejecución y tiene que ir
+# a la par de files/: si se versiona, el repo queda con una cola que apunta
+# a archivos que no existen. La API lo recrea vacío si falta.
+cola-impresion/backend/src/backend/queue.json
+
+# ---------------- Variables de entorno ----------------
+.env
+.env.*
+!.env.example
+
+# ---------------- Logs ----------------
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# ---------------- Editor y sistema operativo ----------------
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*.sw?
+
+# Nota: package-lock.json y uv.lock SÍ se versionan a propósito;
+# son los que garantizan que las dependencias se instalen igual en otra máquina.
