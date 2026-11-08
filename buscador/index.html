@@ -1,4 +1,5 @@
 <!doctype html>
+<link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
 <html lang="es">
   <head>
     <meta charset="UTF-8">
@@ -14,26 +15,35 @@
     <div id="">
     </div>
 
-      <p id ="currentPage">Pagina actual:</p>
-      <input
-        type="text"
-        id="url"
-        step="1"
-      ></input>
+        <p id ="currentPage">Pagina actual:</p>
+        <div class ="searchBar">
+        <input
+          type="text"
+          id="url"
+          step="1"
+          placeholder=""
+        ></input>
+        <button id="buscar">Buscar</button>
+      </div>
 
-      <button id="buscar">Buscar</button>
-      <button id="retroceder">Retroceder</button>
-      <button id="avanzar">Avanzar</button>
-      <button id="exit">Exit</button>
+      
+      <div class="buttonContainer"> 
+        <button id="retroceder">Retroceder</button>
+        <button id="avanzar">Avanzar</button>
+        <button id="exit">Exit</button>
+      </div>
 
-      <p>Páginas siguientes:</p>
-      <ul id="visitados" class="visitados"> </ul>
+      <div class="pageContainer">
+        <div class="layoutSiguientes">
+        <p>Páginas siguientes:</p>
+        <ul id="visitados" class="visitados"> </ul>
+      </div>
 
-      <p>Páginas anteriores</p>
-      <ul id="retrocedidos" class="retrocedidos"> </ul>  
-
-
-        </div>
+      <div class= "layoutAnteriores">
+        <p>Páginas anteriores</p>
+        <ul id="retrocedidos" class="retrocedidos"> </ul>  
+      </div>
+    </div>
 
     <script src="buscador.js"></script>
   </body>

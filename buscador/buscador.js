@@ -39,6 +39,7 @@ class Buscador {
       this.dibujarVisitados();
       this.dibujarRetrocedidos();
       this.dibujarActual();
+      this.animacionSearchBar();
     }
   }
 
@@ -60,7 +61,21 @@ class Buscador {
     }
   }
 
+  animacionSearchBar(txt = "Empieza a escribir con https://", v = 40){
+    let i = 0;
 
+    const escribir = () => {
+      if (i <= txt.length){
+        this.barra.placeholder = txt.slice(0 , i) + (i < txt.length ? "|" : "");
+        i++;
+        setTimeout(escribir, v)
+      }
+    }
+
+    escribir();
+  }
+
+  
 
 }
 
@@ -74,7 +89,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const botonExit = document.querySelector("#exit");
   const botonAvanzar = document.querySelector("#avanzar");
 
+  buscador.animacionSearchBar();
   botonBuscar.addEventListener("click", () => buscador.buscar());
+  buscador.barra.addEventListener("keydown", (e) => {
+    if (e.key == "Enter"){
+      buscador.buscar();
+    }
+  });
   botonRetroceder.addEventListener("click", () => buscador.retroceder());
   botonAvanzar.addEventListener("click",() => buscador.avanzar());
   botonExit.addEventListener("click", () => window.close());

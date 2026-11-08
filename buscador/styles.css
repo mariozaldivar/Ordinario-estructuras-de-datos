@@ -1,0 +1,170 @@
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 7%;
+    font-family: 'Inter';
+    
+}
+
+.searchBar {
+    display: flex;
+    flex-direction: row;
+    border-style: solid;
+    border-color: darkgrey;
+    border-radius: 7px;
+    border-width: 3px;
+    overflow: 1px;
+    gap: 2px;
+}
+
+
+.searchBar input {
+    width: 300px;
+    text-align: left;
+    border: hidden;
+    border-radius: 4px 0px 0px 4px;
+    outline: 3px solid transparent;
+    transition: 300ms ease-in;
+
+}
+
+.searchBar input:hover, .searchBar input:focus {
+    outline-width: 3px;
+    outline-style: solid;
+    outline-color: darkblue;
+
+}
+
+.searchBar input::placeholder {
+    text-align: left;
+}
+
+#buscar {
+    background-color: darkgray;
+    cursor: pointer;
+    border: hidden;
+    transition: 300ms ease-in;
+    border-radius: 0px 4px 4px 0px;
+    border-width: 3px;
+    outline: 3px solid transparent;
+    color: black;
+    overflow: hidden;
+}
+
+#buscar:hover {
+    background-color: darkblue;
+    outline-color: darkblue;
+    color: white;
+    
+}
+
+.buttonContainer {
+    display: flex;
+    flex-direction: row;
+    margin-top: 12px;
+    gap: 15px;;
+}
+
+
+#retroceder {
+    background-color: darkgray;
+    cursor: pointer;
+    border: hidden;
+    transition: 300ms ease-in;
+    border-radius: 4px 4px 4px 4px;
+    border-width: 3px;
+    outline: 3px solid transparent;
+    color: black;
+    overflow: hidden;
+}
+
+#retroceder:hover {
+    background-color: darkblue;
+    outline-color: darkblue;
+    color: white;
+}
+
+#avanzar {
+    background-color: darkgray;
+    cursor: pointer;
+    border: hidden;
+    transition: 300ms ease-in;
+    border-radius: 4px 4px 4px 4px;
+    border-width: 3px;
+    outline: 3px solid transparent;
+    color: black;
+    overflow: hidden;
+}
+
+#avanzar:hover {
+    background-color: darkblue;
+    outline-color: darkblue;
+    color: white;
+}
+
+#exit {
+    background-color: darkgray;
+    cursor: pointer;
+    border: hidden;
+    transition: 300ms ease-in;
+    border-radius: 4px 4px 4px 4px;
+    border-width: 3px;
+    outline: 3px solid transparent;
+    color: black;
+    overflow: hidden;
+}
+
+#exit:hover {
+    background-color: darkblue;
+    outline-color: darkblue;
+    color: white;
+
+}
+
+
+
+.pageContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 50px;
+}
+
+.layoutSiguientes {
+    display: flex;
+    flex-direction: column;
+}
+
+.layoutAnteriores {
+    display: flex;
+    flex-direction: column;
+}
+
+h1 {
+    font-family: 'Inter';
+    font-size: 55px;
+}
+
+
+@keyframes DropIn {
+    from {
+        opacity: 0;
+        transform: translateY(-15px);
+    }
+    to {
+        opacity: 100;
+        transform: translateY(0px);
+    }
+}
+
+.buttonContainer button {
+    animation: DropIn 600ms ease-out both;
+}
+
+.buttonContainer button:nth-child(1) { animation-delay: 100ms; }
+.buttonContainer button:nth-child(2) { animation-delay: 200ms; }
+.buttonContainer button:nth-child(3) { animation-delay: 350ms; }
