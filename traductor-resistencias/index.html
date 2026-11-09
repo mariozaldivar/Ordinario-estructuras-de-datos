@@ -1,4 +1,5 @@
 <!doctype html>
+<link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
 <html lang="es">
   <head>
     <meta charset="UTF-8">
@@ -20,17 +21,17 @@
         placeholder="Introduce el valor de la resistencia"
         step="1"
       ></input>
+      <div class="button_container">
       <button id="add_to_circuit">Agregar resistencia al circuito</button>
-
-
+      <button id="show_series">Mostrar circuito en serie</button>
+      <button id="show_Paralel">Mostrar circuito en paralelo</button>
+      </div>
 
       <div class="circuit" id="circuit">
         <p id="serie">Suma total de las resistencias de tu circuito en serie: </p>
         <p id="paralelo">Suma total de las resistencias de tu circuito en paralelo: </p>
           <div class="resistences_container">
-
           </div>
-
         </div>
 
     <script src="resistor.js"></script>

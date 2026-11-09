@@ -3,6 +3,13 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 7%;
+  font-family: 'Inter';
+}
+
+h1 {
+    font-family: 'Inter';
+    font-size: 50px;
 }
 
 .resistences_container {
@@ -18,10 +25,7 @@
 }
 
 
-#valor_resistencia {
-  width: 220px;
-  margin-bottom: 15px;
-}
+
 
 #current_resistence .resistor {
   width: 750px;
@@ -44,6 +48,54 @@
   height: auto;
   display: block;
 }
+
+.button_container {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  
+}
+
+#add_to_circuit, #show_series, #show_Paralel{
+    background-color: darkgray;
+    cursor: pointer;
+    border: hidden;
+    padding: 4px;
+    transition: 300ms ease-in;
+    border-radius: 4px 4px 4px 4px;
+    border-width: 3px;
+    outline: 3px solid transparent;
+    color: black;
+    overflow: hidden;  
+}
+
+
+#add_to_circuit:hover, #show_series:hover, #show_Paralel:hover {
+    background-color: darkblue;
+    outline-color: darkblue;
+    color: white;
+}
+
+#valor_resistencia  {
+    width: 300px;
+    margin-bottom: 15px;
+    padding: 2px;
+    border: 3px solid darkgray;
+    border-radius: 8px;
+    outline: 4px solid transparent;
+    transition:
+      border-color 300ms ease-in-out,
+      outline-color 300ms ease-in-out;
+}
+
+#valor_resistencia:focus-visible, #valor_resistencia:hover {
+  border-color: navy;
+  outline-color: color-mix(in srgb, color navy, color 35%, transparent);
+}
+
+
+
+
 
 
 

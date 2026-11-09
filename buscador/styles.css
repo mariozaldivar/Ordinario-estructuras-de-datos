@@ -69,7 +69,7 @@
 }
 
 
-#retroceder {
+#retroceder, #avanzar, #exit {
     background-color: darkgray;
     cursor: pointer;
     border: hidden;
@@ -81,50 +81,11 @@
     overflow: hidden;
 }
 
-#retroceder:hover {
+#retroceder:hover, #avanzar:hover, #exit:hover {
     background-color: darkblue;
     outline-color: darkblue;
     color: white;
 }
-
-#avanzar {
-    background-color: darkgray;
-    cursor: pointer;
-    border: hidden;
-    transition: 300ms ease-in;
-    border-radius: 4px 4px 4px 4px;
-    border-width: 3px;
-    outline: 3px solid transparent;
-    color: black;
-    overflow: hidden;
-}
-
-#avanzar:hover {
-    background-color: darkblue;
-    outline-color: darkblue;
-    color: white;
-}
-
-#exit {
-    background-color: darkgray;
-    cursor: pointer;
-    border: hidden;
-    transition: 300ms ease-in;
-    border-radius: 4px 4px 4px 4px;
-    border-width: 3px;
-    outline: 3px solid transparent;
-    color: black;
-    overflow: hidden;
-}
-
-#exit:hover {
-    background-color: darkblue;
-    outline-color: darkblue;
-    color: white;
-
-}
-
-
 
 .pageContainer {
     display: flex;
@@ -134,15 +95,11 @@
     gap: 50px;
 }
 
-.layoutSiguientes {
+.layoutSiguientes, .layoutAnteriores {
     display: flex;
     flex-direction: column;
 }
 
-.layoutAnteriores {
-    display: flex;
-    flex-direction: column;
-}
 
 h1 {
     font-family: 'Inter';
