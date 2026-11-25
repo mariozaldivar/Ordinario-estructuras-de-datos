@@ -1,0 +1,198 @@
+/* [IA] ARCHIVO GENERADO CON INTELIGENCIA ARTIFICIAL (estilos de la versión web). */
+
+/* ==========================================================================
+   Panel "Ver código": ventana lateral con la documentación del proyecto.
+   Los selectores llevan el prefijo .panel-codigo para no mezclarse con los
+   estilos de cada proyecto.
+   ========================================================================== */
+
+/* Botón que abre el panel. */
+button.ver-codigo {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: auto;
+  padding: 6px 14px;
+  border: 1px solid #e6e8ec;
+  border-radius: 999px;
+  background: #fff;
+  color: #374151;
+  font: 600 0.88rem/1.2 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  cursor: pointer;
+  box-shadow: none;
+}
+button.ver-codigo:hover { background: #f7f8fa; color: #15171c; }
+button.ver-codigo::before { content: "</>"; font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 0.8em; color: #7c3aed; }
+
+/* No se desplaza la página de fondo mientras el panel está abierto. */
+html:has(dialog.panel-codigo[open]) { overflow: hidden; }
+
+dialog.panel-codigo {
+  --tinta: #15171c;
+  --suave: #6b7280;
+  --linea: #e6e8ec;
+  --equipo: #15803d;
+  --equipo-claro: #ecfdf3;
+  --ia: #7c3aed;
+  --ia-claro: #f5f0ff;
+  --mixto: #b45309;
+  --mixto-claro: #fff7e6;
+  --codigo-fondo: #f6f8fa;
+
+  position: fixed;
+  inset: 0 0 0 auto;
+  width: min(820px, 100vw);
+  max-width: 100vw;
+  height: 100%;
+  max-height: 100%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: #fff;
+  color: var(--tinta);
+  box-shadow: -12px 0 40px rgba(16, 24, 40, 0.18);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  text-align: left;
+  overflow-y: auto;
+}
+dialog.panel-codigo[open] { display: block; animation: none; }
+dialog.panel-codigo::backdrop { background: rgba(15, 17, 22, 0.4); }
+
+/* Encabezado fijo. */
+.panel-codigo > header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 18px 24px 14px;
+  background: #fff;
+  border-bottom: 1px solid var(--linea);
+}
+.panel-codigo > header h2 { margin: 0; font-size: 1.2rem; font-weight: 800; letter-spacing: -0.01em; color: var(--tinta); }
+.panel-codigo .panel-leyenda { margin: 4px 0 0; color: var(--suave); font-size: 0.85rem; }
+
+.panel-codigo .panel-insignia { padding: 1px 8px; border-radius: 999px; font-size: 0.75rem; font-weight: 700; }
+.panel-codigo .panel-insignia.equipo { background: var(--equipo-claro); color: var(--equipo); }
+.panel-codigo .panel-insignia.ia { background: var(--ia-claro); color: var(--ia); margin-left: 6px; }
+
+.panel-codigo button.panel-cerrar {
+  flex: none;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: #f3f4f6;
+  color: var(--suave);
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: none;
+}
+.panel-codigo button.panel-cerrar:hover { background: #e5e7eb; color: var(--tinta); }
+
+/* Contenido interpretado del Markdown. */
+.panel-codigo .panel-contenido { padding: 8px 24px 48px; }
+
+.panel-codigo .panel-contenido h1 { display: none; } /* El título ya está en el encabezado. */
+.panel-codigo .panel-contenido h2 { margin: 32px 0 6px; font-size: 1.15rem; color: var(--tinta); }
+.panel-codigo .panel-contenido h3 { margin: 28px 0 6px; font-size: 1.05rem; color: var(--tinta); }
+
+.panel-codigo .panel-contenido > h1 + p { color: var(--suave); }
+
+/* Apartados: implementación original (primero) y generado con IA (al final). */
+.panel-codigo .panel-contenido h2.parte {
+  margin: 28px -24px 4px;
+  padding: 12px 24px;
+  font-size: 1.25rem;
+  font-weight: 800;
+  border-top: 1px solid var(--linea);
+  border-bottom: 1px solid var(--linea);
+}
+.panel-codigo .panel-contenido h2.parte::before { margin-right: 10px; padding: 2px 9px; border-radius: 999px; font-size: 0.75rem; vertical-align: 3px; color: #fff; }
+.panel-codigo .panel-contenido h2.parte-equipo { background: var(--equipo-claro); color: var(--equipo); }
+.panel-codigo .panel-contenido h2.parte-equipo::before { content: "EQUIPO"; background: var(--equipo); }
+.panel-codigo .panel-contenido h2.parte-ia { margin-top: 56px; background: var(--ia-claro); color: var(--ia); }
+.panel-codigo .panel-contenido h2.parte-ia::before { content: "IA"; background: var(--ia); }
+.panel-codigo .panel-contenido h2.parte + p { color: var(--suave); font-size: 0.9rem; }
+.panel-codigo .panel-contenido p { margin: 8px 0; color: #374151; }
+.panel-codigo .panel-contenido ul,
+.panel-codigo .panel-contenido ol { padding-left: 1.4rem; color: #374151; }
+
+.panel-codigo .panel-contenido code {
+  padding: 1px 6px;
+  border-radius: 6px;
+  background: var(--codigo-fondo);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.88em;
+}
+
+/* Etiquetas de origen (citas que empiezan con "Origen: ..."). */
+.panel-codigo .cita { margin: 10px 0 8px; padding: 6px 14px; border-left: 4px solid var(--linea); border-radius: 0 10px 10px 0; background: #f7f8fa; }
+.panel-codigo .cita p { margin: 2px 0; color: #374151; }
+.panel-codigo .origen-equipo { border-left-color: var(--equipo); background: var(--equipo-claro); }
+.panel-codigo .origen-equipo strong:first-child { color: var(--equipo); }
+.panel-codigo .origen-ia { border-left-color: var(--ia); background: var(--ia-claro); }
+.panel-codigo .origen-ia strong:first-child { color: var(--ia); }
+.panel-codigo .origen-mixto { border-left-color: var(--mixto); background: var(--mixto-claro); }
+.panel-codigo .origen-mixto strong:first-child { color: var(--mixto); }
+
+/* Tablas. */
+.panel-codigo .tabla { overflow-x: auto; margin: 12px 0; }
+.panel-codigo .tabla table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+.panel-codigo .tabla th { text-align: left; padding: 6px 10px; border-bottom: 2px solid var(--linea); color: var(--suave); }
+.panel-codigo .tabla td { padding: 6px 10px; border-bottom: 1px solid var(--linea); }
+
+/* Bloques de código. */
+.panel-codigo .bloque-codigo { margin: 8px 0 18px; border: 1px solid var(--linea); border-radius: 12px; overflow: hidden; background: var(--codigo-fondo); }
+.panel-codigo .bloque-codigo figcaption {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 8px 5px 14px;
+  border-bottom: 1px solid var(--linea);
+  background: #fff;
+  color: #9ca3af;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.panel-codigo button.copiar {
+  height: auto;
+  padding: 3px 10px;
+  border: 1px solid var(--linea);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--suave);
+  font: inherit;
+  font-size: 0.72rem;
+  cursor: pointer;
+  box-shadow: none;
+}
+.panel-codigo button.copiar:hover { color: var(--tinta); background: #fff; }
+
+.panel-codigo .bloque-codigo pre { margin: 0; padding: 12px 16px; overflow-x: auto; }
+.panel-codigo .bloque-codigo code {
+  padding: 0;
+  background: none;
+  font-size: 0.84rem;
+  line-height: 1.55;
+  color: #24292f;
+}
+
+.panel-codigo .tok-comentario { color: #6a737d; font-style: italic; }
+.panel-codigo .tok-cadena { color: #0a7d2c; }
+.panel-codigo .tok-numero { color: #b45309; }
+.panel-codigo .tok-clave { color: #cf222e; font-weight: 600; }
+.panel-codigo .tok-literal { color: #0550ae; }
+.panel-codigo .tok-clase { color: #8250df; }
+.panel-codigo .tok-funcion { color: #0550ae; }
+
+.panel-codigo .panel-aviso { margin-top: 16px; padding: 16px 20px; border-radius: 12px; background: var(--mixto-claro); color: var(--mixto); }
+.panel-codigo .panel-aviso p { color: #374151; margin: 6px 0 0; }

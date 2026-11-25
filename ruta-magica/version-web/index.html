@@ -1,0 +1,74 @@
+<!doctype html>
+<!-- [IA] Página generada con inteligencia artificial. La lógica original del equipo está en las secciones [EQUIPO] de los scripts. -->
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ruta mágica</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="../../visor/panel.css" />
+  </head>
+  <body>
+    <div class="pagina">
+      <nav class="atajos">
+        <a href="../../index.html">← Todos los proyectos</a>
+        <button type="button" class="ver-codigo" data-ver-codigo="../CODIGO.md" data-titulo="Ruta mágica">Ver código</button>
+      </nav>
+
+      <header class="portada">
+        <span class="etiqueta">Grafos</span>
+        <h1>Ruta mágica</h1>
+        <p>Encuentra la ruta más corta por carretera entre los Pueblos Mágicos de Yucatán. Elige origen y destino en las listas o directamente en el mapa.</p>
+      </header>
+
+      <section class="seccion">
+        <form id="form-ruta" class="controles">
+          <label class="campo">
+            <span>Origen</span>
+            <select id="campo-origen"></select>
+          </label>
+          <button id="boton-intercambiar" type="button" class="fantasma icono intercambiar" title="Intercambiar origen y destino" aria-label="Intercambiar origen y destino">⇄</button>
+          <label class="campo">
+            <span>Destino</span>
+            <select id="campo-destino"></select>
+          </label>
+          <button type="submit">Calcular ruta</button>
+        </form>
+
+        <div class="escenario mapa">
+          <svg id="mapa" viewBox="0 0 800 470" role="img" aria-label="Mapa del grafo de Pueblos Mágicos"></svg>
+          <p id="indicacion" class="indicacion">Haz clic en un pueblo para elegir el <strong>origen</strong>.</p>
+        </div>
+
+        <div id="resultado" class="resultado oculto" aria-live="polite"></div>
+      </section>
+
+      <section class="seccion">
+        <details class="mas">
+          <summary>Matriz de adyacencia (km)</summary>
+          <div id="matriz" class="tabla-contenedor"></div>
+        </details>
+        <details class="mas">
+          <summary>Grados de los vértices</summary>
+          <div id="grados" class="tabla-contenedor"></div>
+        </details>
+        <details class="mas">
+          <summary>Acerca de los datos</summary>
+          <p class="nota">
+            Las distancias son por carretera, en kilómetros, tomadas de drivebestway.com y rome2rio.com (los enlaces están en
+            <code>app.js</code>). Las posiciones del mapa son aproximadas. Mérida no es Pueblo Mágico: se incluye como punto de
+            conexión porque la mayoría de las carreteras pasan por ella. El algoritmo utilizado es Dijkstra, porque todas las
+            distancias son positivas y solo se necesita la ruta desde un origen.
+          </p>
+        </details>
+      </section>
+    </div>
+
+    <script src="ui.js"></script>
+    <script src="classes.js"></script>
+    <script src="pathfinding.js"></script>
+    <script src="app.js"></script>
+    <script src="../../visor/markdown.js"></script>
+    <script src="../../visor/panel.js"></script>
+  </body>
+</html>

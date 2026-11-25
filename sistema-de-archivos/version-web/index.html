@@ -1,0 +1,106 @@
+<!doctype html>
+<!-- [IA] Página generada con inteligencia artificial. La lógica original del equipo está en las secciones [EQUIPO] de los scripts. -->
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sistema de archivos</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="../../visor/panel.css" />
+  </head>
+  <body>
+    <div class="pagina">
+      <nav class="atajos">
+        <a href="../../index.html">← Todos los proyectos</a>
+        <button type="button" class="ver-codigo" data-ver-codigo="../CODIGO.md" data-titulo="Sistema de archivos">Ver código</button>
+      </nav>
+
+      <header class="portada">
+        <span class="etiqueta">Árbol binario de búsqueda</span>
+        <h1>Sistema de archivos</h1>
+        <p>Crea directorios y archivos: cada uno se acomoda en orden alfabético dentro del árbol. Haz clic en un nodo para ver su información.</p>
+      </header>
+
+      <section class="seccion">
+        <form id="form-elemento" class="controles" autocomplete="off">
+          <div class="segmentado" role="radiogroup" aria-label="Tipo de elemento">
+            <input type="radio" name="tipo" id="tipo-directorio" value="directory" checked />
+            <label for="tipo-directorio">📁 Directorio</label>
+            <input type="radio" name="tipo" id="tipo-archivo" value="file" />
+            <label for="tipo-archivo">📄 Archivo</label>
+          </div>
+          <label class="campo">
+            <span>Nombre</span>
+            <input id="campo-nombre" type="text" placeholder="p. ej. Tareas" />
+          </label>
+          <label class="campo solo-archivo oculto">
+            <span>Extensión</span>
+            <input id="campo-extension" class="corto" type="text" maxlength="3" placeholder="txt" />
+          </label>
+          <label class="campo solo-archivo oculto">
+            <span>Tamaño (bytes)</span>
+            <input id="campo-tamano" type="number" min="0" step="1" value="0" />
+          </label>
+          <button type="submit">Insertar</button>
+        </form>
+      </section>
+
+      <section class="seccion">
+        <div class="barra-arbol">
+          <span class="leyenda"><i class="muestra directorio"></i>Directorio</span>
+          <span class="leyenda"><i class="muestra archivo"></i>Archivo</span>
+          <span id="estadisticas" class="estadisticas"></span>
+        </div>
+        <div class="escenario">
+          <svg id="arbol" class="arbol-svg" role="img" aria-label="Árbol del sistema de archivos"></svg>
+        </div>
+
+        <form id="form-buscar" class="controles" autocomplete="off">
+          <label class="campo">
+            <span>Buscar o eliminar</span>
+            <input id="campo-buscar" type="text" placeholder="Nombre del elemento" />
+          </label>
+          <button type="submit">Buscar</button>
+          <button id="boton-eliminar" type="button" class="fantasma">Eliminar</button>
+        </form>
+
+        <div id="ficha" class="ficha oculto" aria-live="polite"></div>
+      </section>
+
+      <section class="seccion">
+        <h2 class="seccion-titulo">Recorridos</h2>
+        <div class="controles">
+          <button type="button" class="fantasma" data-recorrido="in">Inorden</button>
+          <button type="button" class="fantasma" data-recorrido="pre">Preorden</button>
+          <button type="button" class="fantasma" data-recorrido="post">Postorden</button>
+        </div>
+        <ol id="secuencia" class="secuencia" aria-label="Orden del recorrido"></ol>
+        <details class="mas">
+          <summary>Tabla del recorrido</summary>
+          <div id="tabla-recorrido" class="tabla-contenedor">
+            <p class="vacio-estado">Elige un recorrido para ver su tabla.</p>
+          </div>
+        </details>
+        <details class="mas">
+          <summary>Bitácora de operaciones</summary>
+          <ol id="bitacora" class="bitacora"></ol>
+        </details>
+      </section>
+    </div>
+
+    <dialog id="dialogo-confirmar">
+      <h3></h3>
+      <p></p>
+      <form method="dialog" class="acciones">
+        <button value="no" class="fantasma">Cancelar</button>
+        <button value="si" class="peligro">Sí, continuar</button>
+      </form>
+    </dialog>
+
+    <script src="ui.js"></script>
+    <script src="classes.js"></script>
+    <script src="app.js"></script>
+    <script src="../../visor/markdown.js"></script>
+    <script src="../../visor/panel.js"></script>
+  </body>
+</html>

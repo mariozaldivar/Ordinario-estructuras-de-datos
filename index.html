@@ -1,0 +1,285 @@
+<!doctype html>
+<!-- [IA] Página generada con inteligencia artificial. La lógica original del equipo está en las secciones [EQUIPO] de los scripts. -->
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Proyecto Ordinario · Estructuras de Datos</title>
+    <style>
+      :root {
+        --tinta: #15171c;
+        --suave: #6b7280;
+        --tenue: #9ca3af;
+        --linea: #e6e8ec;
+        --superficie: #f7f8fa;
+        --acento: #2563eb;
+        --acento-oscuro: #1d4ed8;
+        --acento-claro: #eef3ff;
+        --resalte: #b45309;
+        --resalte-claro: #fff7e6;
+        --sombra: 0 1px 2px rgba(16, 24, 40, 0.05), 0 12px 32px rgba(16, 24, 40, 0.09);
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        background: #fff;
+        color: var(--tinta);
+        font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .pagina {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 56px 16px 72px;
+      }
+
+      .portada { text-align: center; margin-bottom: 44px; }
+
+      .etiqueta {
+        display: inline-block;
+        padding: 4px 12px;
+        border-radius: 999px;
+        background: var(--acento-claro);
+        color: var(--acento);
+        font-size: 0.8rem;
+        font-weight: 600;
+      }
+
+      h1 {
+        margin: 12px 0 0;
+        font-size: clamp(2rem, 6vw, 3rem);
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        line-height: 1.1;
+      }
+
+      .portada p { margin: 12px auto 0; max-width: 520px; color: var(--suave); font-size: 1.08rem; }
+
+      .proyectos {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 18px;
+      }
+
+      .proyecto {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        padding: 22px;
+        border-radius: 20px;
+        background: var(--superficie);
+        color: inherit;
+        text-decoration: none;
+        transition: transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 220ms ease, background 220ms ease;
+        animation: aparecer 420ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+      }
+      a.proyecto:hover,
+      a.proyecto:focus-visible {
+        outline: none;
+        transform: translateY(-4px);
+        background: #fff;
+        box-shadow: var(--sombra);
+      }
+
+      .proyectos li:nth-child(2) .proyecto { animation-delay: 60ms; }
+      .proyectos li:nth-child(3) .proyecto { animation-delay: 120ms; }
+      .proyectos li:nth-child(4) .proyecto { animation-delay: 180ms; }
+      .proyectos li:nth-child(5) .proyecto { animation-delay: 240ms; }
+      .proyectos li:nth-child(6) .proyecto { animation-delay: 300ms; }
+
+      .ilustracion {
+        height: 96px;
+        display: grid;
+        place-items: center;
+        margin-bottom: 18px;
+        border-radius: 14px;
+        background: #fff;
+        transition: background 220ms ease;
+      }
+      a.proyecto:hover .ilustracion { background: var(--acento-claro); }
+
+      .ilustracion svg { width: 140px; height: 70px; overflow: visible; }
+      .ilustracion .caja { fill: #fff; stroke: var(--acento); stroke-width: 2.5; }
+      .ilustracion .llena { fill: var(--acento); }
+      .ilustracion .trazo { fill: none; stroke: var(--acento); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+
+      .numero { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--tenue); }
+      .proyecto h2 { margin: 2px 0 6px; font-size: 1.25rem; letter-spacing: -0.01em; }
+      .proyecto p { margin: 0; color: var(--suave); font-size: 0.95rem; flex-grow: 1; }
+
+      .pie-tarjeta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 18px;
+        font-size: 0.9rem;
+        font-weight: 600;
+      }
+      .estructura { color: var(--acento); }
+      .abrir { color: var(--tinta); transition: transform 220ms ease; }
+      a.proyecto:hover .abrir { transform: translateX(4px); color: var(--acento); }
+
+      .aviso {
+        margin-top: 12px;
+        padding: 8px 12px;
+        border-radius: 10px;
+        background: var(--resalte-claro);
+        color: var(--resalte);
+        font-size: 0.85rem;
+      }
+      .proyecto.local .pie-tarjeta a { color: var(--acento); text-decoration: none; }
+      .proyecto.local .pie-tarjeta a:hover { text-decoration: underline; }
+
+      footer { margin-top: 48px; text-align: center; color: var(--suave); font-size: 0.9rem; }
+      footer a { color: var(--acento); text-decoration: none; }
+      footer a:hover { text-decoration: underline; }
+
+      @keyframes aparecer {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: none; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after { animation-duration: 1ms !important; animation-delay: 0ms !important; transition-duration: 1ms !important; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="pagina">
+      <header class="portada">
+        <span class="etiqueta">SIS2406</span>
+        <h1>Estructuras de Datos y Algoritmos</h1>
+        <p>Proyecto Ordinario: seis programas, cada uno construido sobre una estructura de datos distinta.</p>
+      </header>
+
+      <ul class="proyectos">
+        <li>
+          <a class="proyecto" href="traductor-resistencias/index.html">
+            <div class="ilustracion" aria-hidden="true">
+              <svg viewBox="0 0 140 70">
+                <rect class="caja" x="5" y="22" width="26" height="26" rx="5" />
+                <rect class="caja" x="31" y="22" width="26" height="26" rx="5" />
+                <rect class="llena" x="57" y="22" width="26" height="26" rx="5" />
+                <rect class="caja" x="83" y="22" width="26" height="26" rx="5" />
+                <rect class="caja" x="109" y="22" width="26" height="26" rx="5" />
+              </svg>
+            </div>
+            <span class="numero">Proyecto 1</span>
+            <h2>Resistencia eléctrica</h2>
+            <p>Convierte el valor de una resistencia a sus bandas de colores y calcula el total en serie y en paralelo.</p>
+            <div class="pie-tarjeta"><span class="estructura">Arreglos</span><span class="abrir">Abrir →</span></div>
+          </a>
+        </li>
+
+        <li>
+          <a class="proyecto" href="carrito-de-compras/version-web/index.html">
+            <div class="ilustracion" aria-hidden="true">
+              <svg viewBox="0 0 140 70">
+                <rect class="caja" x="2" y="22" width="28" height="26" rx="6" />
+                <rect class="caja" x="56" y="22" width="28" height="26" rx="6" />
+                <rect class="llena" x="110" y="22" width="28" height="26" rx="6" />
+                <path class="trazo" d="M33 35 H50 M45 30 L50 35 L45 40 M87 35 H104 M99 30 L104 35 L99 40" />
+              </svg>
+            </div>
+            <span class="numero">Proyecto 2</span>
+            <h2>Carrito de compras</h2>
+            <p>Catálogo, búsqueda y un carrito donde se agregan, modifican y eliminan productos.</p>
+            <div class="pie-tarjeta"><span class="estructura">Listas</span><span class="abrir">Abrir →</span></div>
+          </a>
+        </li>
+
+        <li>
+          <a class="proyecto" href="buscador/index.html">
+            <div class="ilustracion" aria-hidden="true">
+              <svg viewBox="0 0 140 70">
+                <rect class="llena" x="45" y="0" width="50" height="16" rx="5" />
+                <rect class="caja" x="45" y="19" width="50" height="16" rx="5" />
+                <rect class="caja" x="45" y="38" width="50" height="16" rx="5" />
+                <rect class="caja" x="45" y="57" width="50" height="13" rx="5" />
+                <path class="trazo" d="M112 22 V4 M106 10 L112 4 L118 10" />
+              </svg>
+            </div>
+            <span class="numero">Proyecto 3</span>
+            <h2>Navegador web</h2>
+            <p>El historial de un navegador con dos pilas para regresar y avanzar entre páginas.</p>
+            <div class="pie-tarjeta"><span class="estructura">Pilas</span><span class="abrir">Abrir →</span></div>
+          </a>
+        </li>
+
+        <li>
+          <div class="proyecto local">
+            <div class="ilustracion" aria-hidden="true">
+              <svg viewBox="0 0 140 70">
+                <path class="trazo" d="M2 35 H14 M9 30 L14 35 L9 40 M126 35 H138 M133 30 L138 35 L133 40" />
+                <rect class="caja" x="20" y="22" width="22" height="26" rx="5" />
+                <rect class="caja" x="46" y="22" width="22" height="26" rx="5" />
+                <rect class="caja" x="72" y="22" width="22" height="26" rx="5" />
+                <rect class="llena" x="98" y="22" width="22" height="26" rx="5" />
+              </svg>
+            </div>
+            <span class="numero">Proyecto 4</span>
+            <h2>Cola de impresión</h2>
+            <p>Trabajos de impresión atendidos en orden FIFO: entran al final y se imprimen desde el frente.</p>
+            <p class="aviso">Requiere ejecución local: depende de un servidor FastAPI que GitHub Pages no puede alojar.</p>
+            <div class="pie-tarjeta">
+              <span class="estructura">Colas</span>
+              <a href="https://github.com/mariozaldivar/Ordinario-estructuras-de-datos/tree/main/cola-impresion">Ver código →</a>
+            </div>
+          </div>
+        </li>
+
+        <li>
+          <a class="proyecto" href="sistema-de-archivos/version-web/index.html">
+            <div class="ilustracion" aria-hidden="true">
+              <svg viewBox="0 0 140 70">
+                <path class="trazo" d="M70 13 L38 35 M70 13 L102 35 M38 35 L22 58 M38 35 L54 58 M102 35 L118 58" />
+                <circle class="llena" cx="70" cy="11" r="9" />
+                <circle class="caja" cx="38" cy="35" r="9" />
+                <circle class="caja" cx="102" cy="35" r="9" />
+                <circle class="caja" cx="22" cy="59" r="8" />
+                <circle class="caja" cx="54" cy="59" r="8" />
+                <circle class="caja" cx="118" cy="59" r="8" />
+              </svg>
+            </div>
+            <span class="numero">Proyecto 5</span>
+            <h2>Sistema de archivos</h2>
+            <p>Directorios y archivos en un árbol animado: inserción, búsqueda, eliminación y recorridos.</p>
+            <div class="pie-tarjeta"><span class="estructura">Árbol binario de búsqueda</span><span class="abrir">Abrir →</span></div>
+          </a>
+        </li>
+
+        <li>
+          <a class="proyecto" href="ruta-magica/version-web/index.html">
+            <div class="ilustracion" aria-hidden="true">
+              <svg viewBox="0 0 140 70">
+                <path class="trazo" d="M14 18 L52 40 L92 14 L128 44 M52 40 L78 62 L128 44 M92 14 L78 62" />
+                <circle class="llena" cx="14" cy="18" r="8" />
+                <circle class="caja" cx="52" cy="40" r="8" />
+                <circle class="caja" cx="92" cy="14" r="8" />
+                <circle class="caja" cx="78" cy="62" r="7" />
+                <circle class="llena" cx="128" cy="44" r="8" />
+              </svg>
+            </div>
+            <span class="numero">Proyecto 6</span>
+            <h2>Ruta mágica</h2>
+            <p>La ruta más corta entre Pueblos Mágicos de Yucatán con el algoritmo de Dijkstra.</p>
+            <div class="pie-tarjeta"><span class="estructura">Grafos</span><span class="abrir">Abrir →</span></div>
+          </a>
+        </li>
+      </ul>
+
+      <footer>
+        Código fuente en
+        <a href="https://github.com/mariozaldivar/Ordinario-estructuras-de-datos">github.com/mariozaldivar/Ordinario-estructuras-de-datos</a>
+      </footer>
+    </div>
+  </body>
+</html>

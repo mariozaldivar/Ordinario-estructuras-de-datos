@@ -1,0 +1,80 @@
+<!doctype html>
+<!-- [IA] Página generada con inteligencia artificial. La lógica original del equipo está en las secciones [EQUIPO] de los scripts. -->
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carrito de compras</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="../../visor/panel.css" />
+  </head>
+  <body>
+    <div class="pagina">
+      <nav class="atajos">
+        <a href="../../index.html">← Todos los proyectos</a>
+        <button type="button" class="ver-codigo" data-ver-codigo="../CODIGO.md" data-titulo="Carrito de compras">Ver código</button>
+      </nav>
+
+      <header class="portada">
+        <span class="etiqueta">Listas</span>
+        <h1>Carrito de compras</h1>
+        <p>Elige la cantidad de cada producto y agrégalo. El carrito es una lista: puedes cambiar cantidades, quitar productos o finalizar la compra.</p>
+      </header>
+
+      <section class="seccion">
+        <div class="encabezado-seccion">
+          <h2 class="seccion-titulo">Catálogo</h2>
+          <form id="form-buscar" class="buscador" autocomplete="off">
+            <input id="buscar-id" type="number" min="1" step="1" placeholder="Buscar por ID" aria-label="ID del producto" />
+            <button type="submit" class="fantasma">Buscar</button>
+          </form>
+        </div>
+        <div id="catalogo" class="catalogo"></div>
+      </section>
+
+      <section class="seccion">
+        <h2 class="seccion-titulo">Mi carrito</h2>
+        <div class="carrito">
+          <ul id="lista-carrito" class="lista-carrito"></ul>
+          <div class="resumen">
+            <div>
+              <span class="resumen-etiqueta">Artículos</span>
+              <strong id="total-articulos">0</strong>
+            </div>
+            <div class="resumen-total">
+              <span class="resumen-etiqueta">Total</span>
+              <strong id="total-carrito">$0.00</strong>
+            </div>
+          </div>
+          <div class="acciones-carrito">
+            <button id="boton-vaciar" type="button" class="fantasma">Vaciar carrito</button>
+            <button id="boton-finalizar" type="button">Finalizar compra</button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <dialog id="dialogo-confirmar">
+      <h3></h3>
+      <p></p>
+      <form method="dialog" class="acciones">
+        <button value="no" class="fantasma">Cancelar</button>
+        <button value="si" class="peligro">Sí, continuar</button>
+      </form>
+    </dialog>
+
+    <dialog id="dialogo-ticket" class="ticket">
+      <h3>¡Gracias por tu compra!</h3>
+      <div id="ticket"></div>
+      <form method="dialog" class="acciones">
+        <button value="ok">Listo</button>
+      </form>
+    </dialog>
+
+    <script src="ui.js"></script>
+    <script src="classes.js"></script>
+    <script src="app.js"></script>
+    <script src="../../visor/markdown.js"></script>
+    <script src="../../visor/panel.js"></script>
+  </body>
+</html>
