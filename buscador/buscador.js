@@ -36,6 +36,7 @@ class Buscador {
       this.visitados.push(this.barra.value);
       this.barra.value = "";
       this.retrocedidos = [];
+      this.animacionSearchBar()
       this.dibujarVisitados();
       this.dibujarRetrocedidos();
       this.dibujarActual();
@@ -46,6 +47,7 @@ class Buscador {
   retroceder() {
     if (this.visitados.length !== 0) {
       this.retrocedidos.push(this.visitados.pop());
+      this.animacionSearchBar()
       this.dibujarVisitados();
       this.dibujarRetrocedidos();
       this.dibujarActual();
@@ -55,6 +57,7 @@ class Buscador {
   avanzar(){
     if (this.retrocedidos.length !== 0){
       this.visitados.push(this.retrocedidos.pop());
+      this.animacionSearchBar()
       this.dibujarVisitados();
       this.dibujarRetrocedidos();
       this.dibujarActual();

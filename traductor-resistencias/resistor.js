@@ -168,11 +168,12 @@ class Resistor {
 }
 
 class Circuito {
-  constructor(currentResistorElement, currentResistor, circuitContainer) {
+  constructor(currentResistorElement, currentResistor, circuitContainer, barra) {
     this.currentResistor = currentResistor;
     this.circuitContainerElement = circuitContainer;
     this.resistorList = [];
     this.currentResistorElement = currentResistorElement;
+    this.barra = barra;
   }
 
   agregarCurrentResistorACircuito() {
@@ -199,6 +200,20 @@ class Circuito {
     });
     return sum > 0 ? 1 / sum : 0;
   }
+
+  animarInputBar(txt = "Introduce el valor de la resistencia", v = 40){
+    let i = 0;
+
+    const escribir = () => {
+      if (i <= txt.length){
+        this.barra.placeholder = txt.slice(0 , i) + (i < txt.length ? "|" : "");
+        i++;
+        setTimeout(escribir, v)
+      }
+    }
+
+    escribir();
+  }
 }
 
 // () => {} es una arrow function, donde
@@ -207,22 +222,28 @@ document.addEventListener("DOMContentLoaded", () => {
   const currentResistor = document.querySelector("#current_resistence");
   const circuitContainer = document.querySelector(".resistences_container");
   const resistor = new Resistor(0, currentResistor);
-  const circuit = new Circuito(currentResistor, resistor, circuitContainer);
+  const circuit = new Circuito(currentResistor, resistor, circuitContainer, resistorValue);
 
   const botonAgregarACircuito = document.querySelector("#add_to_circuit");
   const textoParalelo = document.querySelector("#paralelo");
   const textoEnSerie = document.querySelector("#serie");
 
+  circuit.animarInputBar();
+
   resistorValue.addEventListener("keydown", (key) => {
     if (key.key === "-") {
-      key.preventDefault;
+      key.preventDefault();
+    }
+    if (key.key === "Enter"){
+      circuit.agregarCurrentResistorACircuito();
+      resistorValue.value = "";
     }
   })
 
   resistorValue.addEventListener("input", () => {
     if (isNaN(parseFloat(resistorValue.value))){
       circuit.currentResistor.setResistorValue(0);
-      resistorValue.value = '';
+      resistorValue.value = "";
      alert("Escriba un numero positivo");
     } else {
       circuit.currentResistor.setResistorValue(resistorValue.value);
@@ -233,7 +254,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   botonAgregarACircuito.addEventListener("click", () => {
     circuit.agregarCurrentResistorACircuito();
+    resistorValue.value = "";
     textoEnSerie.textContent = `Suma total de las resistencias de tu circuito en serie: ${circuit.sumarEnSerie()}Ω`;
     textoParalelo.textContent = `Suma total de las resistencias de tu circuito en paralelo: ${circuit.sumarEnParalelo()||0}Ω`;
   });
+
 });
