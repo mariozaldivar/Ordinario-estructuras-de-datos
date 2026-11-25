@@ -1,5 +1,6 @@
 <!doctype html>
 <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
+<!-- [EQUIPO] Página escrita por el equipo. Solo las partes marcadas con [IA] se agregaron con inteligencia artificial. -->
 <html lang="es">
   <head>
     <meta charset="UTF-8">
@@ -7,6 +8,9 @@
     <title>Buscador</title>
 
     <link rel="stylesheet" href="styles.css">
+    <!-- [IA] inicio: estilos del panel "Ver código" (documentación). -->
+    <link rel="stylesheet" href="../visor/panel.css">
+    <!-- [IA] fin -->
   </head>
 
   <body>
@@ -45,6 +49,16 @@
       </div>
     </div>
 
+    <!-- [IA] inicio: botón y panel "Ver código" con la documentación del proyecto. -->
+    <div class="verCodigo" style="margin-top: 32px">
+      <button type="button" class="ver-codigo" data-ver-codigo="CODIGO.md" data-titulo="Navegador web">Ver código</button>
+    </div>
+    <!-- [IA] fin -->
+
     <script src="buscador.js"></script>
+    <!-- [IA] inicio: intérprete de Markdown y panel de documentación. -->
+    <script src="../visor/markdown.js"></script>
+    <script src="../visor/panel.js"></script>
+    <!-- [IA] fin -->
   </body>
 </html>

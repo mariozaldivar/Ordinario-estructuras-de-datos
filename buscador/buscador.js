@@ -1,3 +1,6 @@
+/* [EQUIPO] ARCHIVO ESCRITO POR EL EQUIPO.
+ * No contiene código generado con inteligencia artificial. */
+
 class Buscador {
   constructor() {
     this.barra = document.querySelector("#url");
