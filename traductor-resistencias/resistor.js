@@ -235,13 +235,14 @@ document.addEventListener("DOMContentLoaded", () => {
       key.preventDefault();
     }
     if (key.key === "Enter"){
-      circuit.agregarCurrentResistorACircuito();
-      resistorValue.value = "";
+      botonAgregarACircuito.click();
     }
   })
 
   resistorValue.addEventListener("input", () => {
-    if (isNaN(parseFloat(resistorValue.value))){
+    if (resistorValue.value === "") {
+      circuit.currentResistor.setResistorValue(0);
+    } else if(isNaN(parseFloat(resistorValue.value))||parseFloat(resistorValue) < 0){
       circuit.currentResistor.setResistorValue(0);
       resistorValue.value = "";
      alert("Escriba un numero positivo");
@@ -255,8 +256,7 @@ document.addEventListener("DOMContentLoaded", () => {
   botonAgregarACircuito.addEventListener("click", () => {
     circuit.agregarCurrentResistorACircuito();
     resistorValue.value = "";
-    textoEnSerie.textContent = `Suma total de las resistencias de tu circuito en serie: ${circuit.sumarEnSerie()}Ω`;
-    textoParalelo.textContent = `Suma total de las resistencias de tu circuito en paralelo: ${circuit.sumarEnParalelo()||0}Ω`;
+    textoEnSerie.textContent = `Suma total de las resistencias de tu circuito en serie: ${circuit.sumarEnSerie().toFixed(3)}Ω`;
+    textoParalelo.textContent = `Suma total de las resistencias de tu circuito en paralelo: ${circuit.sumarEnParalelo().toFixed(3)||0}Ω`;
   });
-
 });
