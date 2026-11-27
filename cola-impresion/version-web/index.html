@@ -1,0 +1,100 @@
+<!doctype html>
+<!-- [IA] Página generada con inteligencia artificial. Es la versión estática (GitHub Pages) de la aplicación React + FastAPI de las carpetas frontend/ y backend/. -->
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Cola de impresión</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <nav class="top-nav">
+        <a href="../../index.html">← Todos los proyectos</a>
+        <span class="demo-tag">Versión de demostración</span>
+      </nav>
+
+      <details class="notice">
+        <summary>
+          <span class="notice-icon" aria-hidden="true">i</span>
+          <span>
+            Esta es una <strong>demostración estática</strong>: los archivos
+            que elijas no se suben a ningún lado y la cola se borra al recargar
+            la página.
+          </span>
+        </summary>
+        <div class="notice-body">
+          <p>
+            El programa real es una aplicación <em>fullstack</em> que GitHub
+            Pages no puede alojar, porque necesita un servidor:
+          </p>
+          <ul>
+            <li>
+              <strong>Backend (FastAPI, Python):</strong> recibe los archivos,
+              los guarda en la carpeta <code>files/</code> y mantiene la cola
+              en <code>queue.json</code>. Expone los endpoints
+              <code>POST /uploadfile</code> (encolar),
+              <code>POST /getfiles</code> (consultar) y
+              <code>POST /printfile</code> (desencolar).
+            </li>
+            <li>
+              <strong>Frontend (React + Vite):</strong> esta misma interfaz,
+              pero cada acción llama a la API y muestra el progreso real de la
+              subida.
+            </li>
+            <li>
+              Como la cola vive en el servidor, es persistente y todas las
+              computadoras que abren la aplicación ven la misma cola.
+            </li>
+          </ul>
+          <p>
+            Aquí la API se sustituye por una cola en memoria dentro del
+            navegador que imita sus respuestas. Solo se usan el nombre y el
+            tamaño del archivo; su contenido nunca se lee. Para correr el
+            programa completo, sigue las instrucciones del
+            <a
+              href="https://github.com/mariozaldivar/Ordinario-estructuras-de-datos/tree/main/cola-impresion"
+              >código fuente en GitHub</a
+            >.
+          </p>
+        </div>
+      </details>
+
+      <header class="page-head">
+        <h1>Cola de impresión</h1>
+        <p>
+          Los archivos se imprimen en el orden en que llegan: entran por el
+          final y salen por el frente.
+        </p>
+      </header>
+
+      <section class="card">
+        <div class="queue-area" id="queue"></div>
+
+        <div class="upload-band" id="upload">
+          <svg class="upload-icon" viewBox="0 0 48 48" role="presentation" aria-hidden="true">
+            <path d="M24 31V13m0 0-7 7m7-7 7 7" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M11 30v4a3 3 0 0 0 3 3h20a3 3 0 0 0 3-3v-4" fill="none" stroke-width="3" stroke-linecap="round" />
+          </svg>
+          <p class="upload-title">Arrastra y suelta tu archivo</p>
+          <span class="upload-or">o</span>
+          <button type="button" class="browse-button" id="browse">Buscar</button>
+          <input type="file" multiple class="upload-input" id="file-input" />
+        </div>
+      </section>
+
+      <footer class="page-foot" role="status">
+        <p class="message" id="message"></p>
+      </footer>
+    </main>
+
+    <script src="cola.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
