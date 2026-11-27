@@ -515,3 +515,10 @@ button:disabled {
     padding-left: 18px;
   }
 }
+
+.nav-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}

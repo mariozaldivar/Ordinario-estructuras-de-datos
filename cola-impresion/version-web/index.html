@@ -12,12 +12,16 @@
     />
     <title>Cola de impresión</title>
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="../../visor/panel.css" />
   </head>
   <body>
     <main class="page">
       <nav class="top-nav">
         <a href="../../index.html">← Todos los proyectos</a>
-        <span class="demo-tag">Versión de demostración</span>
+        <span class="nav-actions">
+          <span class="demo-tag">Versión de demostración</span>
+          <button type="button" class="ver-codigo" data-ver-codigo="../CODIGO.md" data-titulo="Cola de impresión">Ver código</button>
+        </span>
       </nav>
 
       <details class="notice">
@@ -96,5 +100,7 @@
 
     <script src="cola.js"></script>
     <script src="app.js"></script>
+    <script src="../../visor/markdown.js"></script>
+    <script src="../../visor/panel.js"></script>
   </body>
 </html>
